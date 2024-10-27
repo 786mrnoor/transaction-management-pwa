@@ -4,7 +4,6 @@ import timeAgo from "../../helpers/timeAgo";
 
 export default function Table({ tableAction }) {
     let transactions = useTransaction();
-    console.log(transactions);
     const TransactionModal = useTransactionModal();
 
     async function handleDelete(topicId) {
