@@ -19,8 +19,12 @@
 
             .inputField {
                 position: relative;
+                min-width: 150px;
+                    width: 100%;
+                    max-width: 250px;
 
                 input {
+                    width: 100%;
                     padding: 10px;
                     font-size: 14px;
                     color: var(--primary);
@@ -61,6 +65,9 @@
             }
 
             select {
+                min-width: 150px;
+                    width: 100%;
+                    max-width: 250px;
                 padding: 10px;
                 font-size: 14px;
                 color: var(--primary);
@@ -204,6 +211,13 @@
     .tableContainer {
         overflow: auto;
 
+        .Cr {
+                color: green;
+            }
+        
+            .Dr {
+                color: red;
+            }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -228,6 +242,10 @@
                     &.sortButton {
                         cursor: pointer;
                     }
+select {
+    width: 100%;
+    padding: 5px 8px;
+}
                 }
             }
 
@@ -237,6 +255,9 @@
                         background-color: #f0f0f0;
                     }
 
+                                        &.pending {
+                                            background-color: rgb(249, 80, 80);
+                                        }
                     td:nth-child(2) {
                         min-width: 100px;
 
@@ -245,6 +266,13 @@
                         }
                     }
 
+                                        td.Cr {
+                                            color: green;
+                                        }
+                    
+                                        td.Dr {
+                                            color: red;
+                                        }
                     td:nth-child(6),
                     td:nth-child(7) {
                         font-size: 12px;

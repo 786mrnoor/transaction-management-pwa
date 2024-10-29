@@ -20,9 +20,11 @@ export default function Form() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        value.amount = Number(value.amount);
         TransactionModal.post(value);
         setValue(VALUE);
     }
+
     return (
         <form onSubmit={handleSubmit}>
             <h2 id="formHeader">Transactions</h2>
@@ -45,8 +47,11 @@ export default function Form() {
                 </select>
                 <select id="category" value={value.category} onChange={handleInput} >
                     <option value="CSC">CSC</option>
-                    <option value="Printer">Printer</option>
                     <option value="E-district">E-district</option>
+                    <option value="Scholarship">Scholarship</option>
+                    <option value="PanCard">Pan Card</option>
+                    <option value="Printer">Printer</option>
+                    <option value="Other">Other</option>
                 </select>
             </main>
             <footer>
