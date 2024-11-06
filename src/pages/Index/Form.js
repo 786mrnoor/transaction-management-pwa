@@ -5,7 +5,7 @@ const VALUE = {
     description: '',
     amount: 0,
     status: 'completed',
-    category: 'CSC',
+    category: 'Bank',
     type: 'Cr'
 }
 
@@ -46,6 +46,7 @@ export default function Form() {
                     <option value="pending">Pending</option>
                 </select>
                 <select id="category" value={value.category} onChange={handleInput} >
+                    <option value="Bank">Bank</option>
                     <option value="CSC">CSC</option>
                     <option value="E-district">E-district</option>
                     <option value="Scholarship">Scholarship</option>

@@ -60,6 +60,7 @@ export default function Table({ tableAction }) {
                         <th>
                             <select id="category" onChange={handleFilter}>
                                 <option value="All">All</option>
+                                <option value="Bank">Bank</option>
                                 <option value="CSC">CSC</option>
                                 <option value="E-district">E-district</option>
                                 <option value="Scholarship">Scholarship</option>
