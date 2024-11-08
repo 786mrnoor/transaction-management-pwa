@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const TITLE = 'MCQ-APP';
+const TITLE = 'Transaction Management';
 export default function useTitle(title) {
     useEffect(() => {
         if (title) {

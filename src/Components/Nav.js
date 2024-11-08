@@ -1,5 +1,5 @@
 import './Nav.css';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../images/profile.png';
 import { useEffect, useState } from 'react';
 import { useGetUser } from '../ContextProvider/UserContextProvider.js';
@@ -35,9 +35,9 @@ export default function Nav() {
 
     return (
         <>
-            <nav id="topNav">
+            <nav id="topNav" className='bg-light border'>
                 {pathname !== '/' && <BackButton />}
-                <NavLink to='/'>Home</NavLink>
+                <Link className="btn btn-dark" to='/'>Home</Link>
                 <img onClick={toggleProfileContainer} src={user?.photoURL || logo} alt="logo" />
                 {showProfile && <Profile onCloseProfile={closeProfile} />}
             </nav>

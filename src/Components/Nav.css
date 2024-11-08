@@ -6,41 +6,9 @@ nav#topNav {
     margin-bottom: 7px;
     padding: 0 3%;
     position: relative;
-    background-color: #1d5c88;
+    /* background-color: #1d5c88; */
     height: 70px;
 
-    a,
-    .backButton {
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: var(--primary);
-        fill: var(--primary);
-        background-color: white;
-        text-decoration: none;
-        border-radius: 10px;
-        transition: all 0.3s;
-        border: 2px solid var(--primary);
-        cursor: pointer;
-        padding-inline: 12px;
-
-        &:active {
-            background-color: var(--primary);
-            color: white;
-            fill: white;
-            border-color: white;
-        }
-        svg{
-            color: inherit;
-            fill: inherit;
-        }
-    }
-
-    .backButton{
-        padding: 10px;
-        aspect-ratio: 1;
-    }
 
     img {
         height: 50px;

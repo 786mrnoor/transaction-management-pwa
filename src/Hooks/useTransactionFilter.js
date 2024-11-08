@@ -8,25 +8,45 @@ const FILTER = {
 }
 
 export default function useTransactionFilter(transactions) {
-    const [{ search, type, status, category }, setFilter] = useState(FILTER);
-    let debit = 0;
-    let credit = 0;
+    let [filter, setFilter] = useState(FILTER);
+    let { type, status, category } = filter;
+    let search = filter.search.toLowerCase();
+
+    let obj = {
+        debit: 0,
+        credit: 0,
+        pendingDebit: 0,
+        pendingCredit: 0,
+    }
     const filteredTransactions = transactions.filter(tr => {
         if (
-            tr.description.includes(search) &&
+            tr.description.toLowerCase().includes(search) &&
             (type === 'All' || type === tr.type) &&
             (status === 'All' || status === tr.status) &&
             (category === 'All' || category === tr.category)
         ) {
             if (tr.type === 'Cr') {
-                credit += tr.amount;
+                obj.credit += tr.amount;
+                obj.pendingCredit += tr.status === 'pending' ? tr.amount : 0;
             }
             if (tr.type === 'Dr') {
-                debit += tr.amount;
+                obj.debit += tr.amount;
+                obj.pendingDebit += tr.status === 'pending' ? tr.amount : 0;
             }
             return true;
         }
+        return false;
     });
 
-    return [{ debit, credit, data: filteredTransactions }, setFilter];
+    function handleSetFilter(value) {
+        if (typeof value === 'function') {
+            setFilter(s => value(s));
+        }
+        else if (value === 'reset') {
+            setFilter(FILTER);
+        } else {
+            setFilter(value);
+        }
+    }
+    return [{ ...obj, data: filteredTransactions }, filter, handleSetFilter];
 };

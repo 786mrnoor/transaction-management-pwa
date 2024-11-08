@@ -14,20 +14,20 @@ export function useTransaction() {
 export function useTransactionModal() {
     return useContext(TransactionModalContext);
 }
-export function useSetFilter() {
+export function useFilter() {
     return useContext(TransactionFilterContext);
 }
 
 
 export default function TransactionContextProvider({ children }) {
     const [transactions, Transaction] = useTransactionEffect();
-    const [filteredTransactions, setFilter] = useTransactionFilter(transactions);
+    const [filteredTransactions, filter, setFilter] = useTransactionFilter(transactions);
 
 
     return (
         <TransactionContext.Provider value={filteredTransactions}>
             <TransactionModalContext.Provider value={Transaction}>
-                <TransactionFilterContext.Provider value={setFilter}>
+                <TransactionFilterContext.Provider value={[filter, setFilter]}>
                     {children}
                 </TransactionFilterContext.Provider>
             </TransactionModalContext.Provider>
