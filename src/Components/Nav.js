@@ -38,6 +38,7 @@ export default function Nav() {
             <nav id="topNav" className='bg-light border'>
                 {pathname !== '/' && <BackButton />}
                 <Link className="btn btn-dark" to='/'>Home</Link>
+                <Link className="btn btn-dark" to='categories'>Categories</Link>
                 <img onClick={toggleProfileContainer} src={user?.photoURL || logo} alt="logo" />
                 {showProfile && <Profile onCloseProfile={closeProfile} />}
             </nav>

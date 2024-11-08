@@ -1,9 +1,20 @@
 import { useTransaction, useTransactionModal } from "../../ContextProvider/TransactionContextProvider"
+import { useCategory } from "../../ContextProvider/CategoryContextProvider"
 import timeAgo from "../../helpers/timeAgo";
+import { useMemo } from "react";
 
 export default function Table({ edit, onEdit }) {
     let transactions = useTransaction();
     const TransactionModal = useTransactionModal();
+    const category = useCategory();
+    const categories = useMemo(() => {
+        if (category.length <= 0) return;
+        let obj = {}
+        category.forEach(c => obj[c.id] = c.title);
+        return obj;
+    }, [category]);
+
+
 
     async function handleDelete(topicId) {
         if (window.confirm('Are You Sure You Want To Delete This Topic!')) {
@@ -47,7 +58,13 @@ export default function Table({ edit, onEdit }) {
                                 <td>{transaction.description}</td>
                                 <td className={transaction.type}>{transaction.amount} {transaction.type}</td>
                                 <td>{transaction.status}</td>
-                                <td>{transaction.category}</td>
+                                <td>
+                                    {categories
+                                        ? categories[transaction.category]
+                                            ? categories[transaction.category]
+                                            : transaction.category
+                                        : transaction.category}
+                                </td>
                                 <td>{timeAgo(transaction.time)} ago</td>
                                 <td>
                                     <div className="btn-group">
@@ -63,6 +80,3 @@ export default function Table({ edit, onEdit }) {
         </>
     )
 };
-
-
-{/* <h2><span className="Cr">{transactions.credit}</span> - <span className="Dr">{transactions.debit}</span> = {transactions.credit - transactions.debit}</h2> */ }

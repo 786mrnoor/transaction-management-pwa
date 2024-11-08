@@ -1,7 +1,9 @@
+import { useCategory } from "../../ContextProvider/CategoryContextProvider";
 import { useFilter } from "../../ContextProvider/TransactionContextProvider"
 
 export default function Header() {
     const [filter, setFilter] = useFilter();
+    const category = useCategory();
 
     function handleFilter(e) {
         setFilter(state => ({
@@ -43,13 +45,11 @@ export default function Header() {
                     <span className="input-group-text">Category</span>
                     <select value={filter.category} className="form-select" name="category" onChange={handleFilter}>
                         <option value="All">All</option>
-                        <option value="Bank">Bank</option>
-                        <option value="CSC">CSC</option>
-                        <option value="E-district">E-district</option>
-                        <option value="Scholarship">Scholarship</option>
-                        <option value="PanCard">Pan Card</option>
-                        <option value="Printer">Printer</option>
-                        <option value="Other">Other</option>
+                        {
+                            category.map(c => (
+                                <option key={c.id} value={c.id}>{c.title}</option>
+                            ))
+                        }
                     </select>
                 </div>
             </div>

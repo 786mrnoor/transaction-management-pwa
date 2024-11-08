@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTransactionModal } from "../../ContextProvider/TransactionContextProvider";
+import { useCategory } from "../../ContextProvider/CategoryContextProvider";
 
 const VALUE = {
     description: '',
     amount: 0,
     status: 'completed',
-    category: 'Bank',
+    category: '',
     type: 'Cr'
 }
 
@@ -13,6 +14,14 @@ export default function Form({ edit, setEdit }) {
     const [value, setValue] = useState(VALUE);
     const [isEditable, setIsEditable] = useState(edit);
     const TransactionModal = useTransactionModal();
+    const category = useCategory();
+
+    useEffect(() => {
+        if (category.length > 0) {
+            setValue(s => ({ ...s, category: category[0].id }))
+        }
+    }, [category]);
+
 
     if (isEditable !== edit) {
         setIsEditable(edit);
@@ -68,17 +77,15 @@ export default function Form({ edit, setEdit }) {
                     </div>
                 </div>
 
-                <div className="co">
+                <div className="col">
                     <div className="input-group">
                         <label htmlFor="category" className="input-group-text">Category</label>
-                        <select className="form-select" id="category" value={value.category} onChange={handleInput} >
-                            <option value="Bank">Bank</option>
-                            <option value="CSC">CSC</option>
-                            <option value="E-district">E-district</option>
-                            <option value="Scholarship">Scholarship</option>
-                            <option value="PanCard">Pan Card</option>
-                            <option value="Printer">Printer</option>
-                            <option value="Other">Other</option>
+                        <select className="form-select" id="category" value={value.category} onChange={handleInput} required>
+                            {
+                                category.map(c => (
+                                    <option key={c.id} value={c.id}>{c.title}</option>
+                                ))
+                            }
                         </select>
                     </div>
                 </div>
