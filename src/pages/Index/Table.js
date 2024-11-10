@@ -31,11 +31,18 @@ export default function Table({ edit, onEdit }) {
     let data = transactions.data.sort((a, b) => b.time - a.time);
     return (
         <>
-            <div className="row gx-3 p-2 mt-2 bg-secondary-subtle border">
+            <div className="row justify-content-around gx-3 p-2 mt-2 bg-secondary-subtle border">
                 <span className="col text-success text-nowrap">Total Credit: {transactions.credit}</span>
                 <span className="col text-danger text-nowrap">Total Debit: {transactions.debit}</span>
                 <span className="col text-success text-nowrap">Pending Credit:  {transactions.pendingCredit}</span>
                 <span className="col text-danger text-nowrap">Pending Debit:  {transactions.pendingDebit}</span>
+                <span className="col text-bg-success text-nowrap">Total Balance:&nbsp;
+                    {
+                        transactions.credit
+                        - transactions.debit
+                        - transactions.pendingCredit
+                        - transactions.pendingDebit
+                    }</span>
             </div>
             <div className="table-responsive scrollbar mt-2">
                 <table className="table table-bordered">
@@ -56,7 +63,7 @@ export default function Table({ edit, onEdit }) {
                                 className={(edit.id === transaction.id ? " table-info" : (transaction.status === 'pending' ? 'table-danger' : ''))}>
                                 <td>{i + 1}</td>
                                 <td>{transaction.description}</td>
-                                <td className={transaction.type}>{transaction.amount} {transaction.type}</td>
+                                <td className={transaction.type === 'Cr' ? 'text-success' : 'text-danger'}>{transaction.amount} {transaction.type}</td>
                                 <td>{transaction.status}</td>
                                 <td>
                                     {categories

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Form from './Form.js';
 import Header from './Header.js';
-import './Home.css';
 import Table from './Table.js';
 
 export default function Home() {
@@ -9,7 +8,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="Home">
+      <div className="my-container p-3 p-lg-4">
         <Form edit={edit} setEdit={setEdit} />
         <hr />
         <Header />

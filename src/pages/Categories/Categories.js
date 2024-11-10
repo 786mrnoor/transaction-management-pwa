@@ -18,7 +18,7 @@ export default function Categories({ edit, onEdit }) {
     }
 
     return (
-        <ul className="list-group mt-4">
+        <ul className="list-group p-3 mt-4 mb-4">
             {
                 data.map(category => (
                     <li key={category.id} className={"list-group-item category-list-item" + (edit.id === category.id ? " bg-info-subtle" : '')}>

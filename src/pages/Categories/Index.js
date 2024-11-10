@@ -5,7 +5,7 @@ import Form from "./Form";
 export default function Index() {
     const [edit, setEdit] = useState(false);
     return (
-        <div className="container border p-3 bg-body-secondary">
+        <div className="my-container">
             <Form edit={edit} setEdit={setEdit} />
             <Categories edit={edit} onEdit={setEdit} />
         </div>

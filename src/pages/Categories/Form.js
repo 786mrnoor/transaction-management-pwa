@@ -35,10 +35,10 @@ export default function Form({ edit, setEdit }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="p-3 bg-body-secondary my-border-bottom">
             <div className="input-group">
                 <span className="input-group-text">Title</span>
-                <input type="text" value={title} onChange={e => setValue(e.target.value)} className="form-control" />
+                <input type="text" value={title} onChange={e => setValue(e.target.value)} className="form-control" required />
                 <button className="btn btn-primary">{edit ? 'Update' : 'Add'}</button>
                 {edit &&
                     <button className="btn btn-danger" onClick={handleReset}>Reset</button>
