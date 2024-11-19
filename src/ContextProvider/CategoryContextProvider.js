@@ -14,11 +14,10 @@ export function useCategoryModal() {
 }
 
 export default function CategoryContextProvider({ children }) {
-    const [Categories, Category] = useCategoryEffect();
-
+    const [Categories, CategoryModal] = useCategoryEffect();
     return (
         <CategoryContext.Provider value={Categories}>
-            <CategoryModalContext.Provider value={Category}>
+            <CategoryModalContext.Provider value={CategoryModal}>
                 {children}
             </CategoryModalContext.Provider>
         </CategoryContext.Provider>

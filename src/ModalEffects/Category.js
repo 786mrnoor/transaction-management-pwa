@@ -4,7 +4,7 @@ import CategoryModal from "../models/Category.js";
 import { useGetUser } from "../ContextProvider/UserContextProvider.js";
 
 export default function useCategoryEffect() {
-    const [Categories, dispatch] = useReducer(categoryReducer, null, createInitialState);
+    const [categories, dispatch] = useReducer(categoryReducer, null, createInitialState);
     const user = useGetUser();
     const showLoader = useLoader();
     const Category = useRef(new CategoryModal(showLoader, user?.uid));
@@ -37,7 +37,7 @@ export default function useCategoryEffect() {
         }
     }, [user]);
 
-    return [Categories, Category.current];
+    return [categories, Category.current];
 };
 
 function categoryReducer(state, action) {

@@ -38,10 +38,9 @@ export default function Table({ edit, onEdit }) {
                 <span className="col text-danger text-nowrap">Pending Debit:  {transactions.pendingDebit}</span>
                 <span className="col text-bg-success text-nowrap">Total Balance:&nbsp;
                     {
-                        transactions.credit
-                        - transactions.debit
-                        - transactions.pendingCredit
-                        - transactions.pendingDebit
+                        (transactions.credit - transactions.pendingCredit)
+                        -
+                        (transactions.debit - transactions.pendingDebit)
                     }</span>
             </div>
             <div className="table-responsive scrollbar mt-2">

@@ -37,6 +37,7 @@ body::before {
     content: "XXL";
   }
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -70,6 +71,7 @@ code {
   width: 95%;
   border: 1px solid var(--bs-border-color);
 }
+
 .category-list-item {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -109,6 +111,7 @@ code {
     background-color: var(--bs-primary);
   }
 }
+
 @-webkit-keyframes slide-in-blurred-bottom {
   0% {
     -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
