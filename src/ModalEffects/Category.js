@@ -33,6 +33,7 @@ export default function useCategoryEffect() {
                 disconnect1();
                 disconnect2();
                 disconnect3();
+                dispatch({ type: "RESET" });
             }
         }
     }, [user]);
@@ -55,6 +56,8 @@ function categoryReducer(state, action) {
         case "DELETE":
             let categoryId = action.payload;
             return state.filter(category => category.id !== categoryId);
+        case "RESET":
+            return createInitialState();
         default:
             return state;
     }
