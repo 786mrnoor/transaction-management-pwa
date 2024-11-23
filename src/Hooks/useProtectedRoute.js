@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useGetUser } from "../ContextProvider/UserContextProvider";
 import { useEffect } from "react";
-import {useLoader} from '../ContextProvider/LoaderContextProvider.js';
+import { useLoader } from '../ContextProvider/LoaderContextProvider.js';
 
 export default function useProtectedRoute() {
     const user = useGetUser();
@@ -12,11 +12,11 @@ export default function useProtectedRoute() {
             showLoader(false);
             return navigate('/login');
         }
-        if(!user?.uid){
-            showLoader(true);
-        }
-        if(user?.uid){
+        if (user?.uid) {
             showLoader(false);
+        }
+        if (!user?.uid) {
+            showLoader(true);
         }
     }, [user, navigate, showLoader]);
 };

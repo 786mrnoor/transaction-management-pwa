@@ -115,3 +115,40 @@ code {
     opacity: 1;
   }
 }
+@media print {
+  #root:has(.index-page) {
+
+    #topNav,
+    #topNav *,
+    .form,
+    .form *,
+    hr,
+    header,
+    header *,
+    table th:last-child,
+    table th:last-child *,
+    table td:last-child,
+    table td:last-child *,
+    table th:first-child,
+    table th:first-child *,
+    table td:first-child,
+    table td:first-child * {
+      display: none !important;
+    }
+
+    * {
+      print-color-adjust: exact;
+    }
+
+    /* .index-page #transaction-header * {
+      display: block;
+    } */
+  }
+
+}
+
+@page {
+  margin: 0;
+  margin-top: 0.2in;
+  margin-bottom: 0.2in;
+}

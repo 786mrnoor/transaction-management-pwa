@@ -3,7 +3,7 @@ import Loader from '../Components/Loader.js';
 
 const LoaderContext = createContext(null);
 
-export function useLoader(){
+export function useLoader() {
     return useContext(LoaderContext).showLoader;
 }
 
@@ -21,9 +21,9 @@ export default function LoaderContextProvider({ children }) {
     }
 
     return (
-        <LoaderContext.Provider value={{showLoader}}>
+        <LoaderContext.Provider value={{ showLoader }}>
             {children}
-            <Loader ref={loaderRef}/>
+            <Loader ref={loaderRef} />
         </LoaderContext.Provider>
     )
 };

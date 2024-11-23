@@ -31,7 +31,7 @@ export default function Table({ edit, onEdit }) {
     let data = transactions.data.sort((a, b) => b.time - a.time);
     return (
         <>
-            <div className="row justify-content-around gx-3 p-2 mt-2 bg-secondary-subtle border">
+            <div id='transaction-header' className="row justify-content-around gx-3 p-2 mt-2 bg-secondary-subtle border">
                 <span className="col text-success text-nowrap">Total Credit: {transactions.credit}</span>
                 <span className="col text-danger text-nowrap">Total Debit: {transactions.debit}</span>
                 <span className="col text-success text-nowrap">Pending Credit:  {transactions.pendingCredit}</span>
