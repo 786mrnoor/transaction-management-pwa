@@ -19,6 +19,7 @@ export default function Form({ edit, setEdit }) {
     useEffect(() => {
         if (category.length > 0) {
             setValue(s => ({ ...s, category: category[0].id }))
+            VALUE.category = category[0].id;
         }
     }, [category]);
 

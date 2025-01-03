@@ -35,11 +35,11 @@ class Realtime{
         }
     }
 
-    static addValueListener(path, listener){
+    static addValueListener(path, listener) {
         return onValue(ref(db, path), listener);
     }
 
-    static incrementBy(value){
+    static incrementBy(value) {
         return increment(value);
     }
 }
