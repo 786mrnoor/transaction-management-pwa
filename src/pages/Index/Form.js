@@ -29,7 +29,7 @@ export default function Form({ edit, setEdit }) {
         if (edit) {
             setValue(edit);
         }
-        if (category.length > 0) {
+        if (!edit && category.length > 0) {
             setValue(s => ({ ...s, category: category[0].id }))
         }
     }
